@@ -2,13 +2,18 @@
   "name": "sinuous-context",
   "version": "0.0.1",
   "description": "\"A convenient context api for your Sinuous application.\"",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prod": "rollup -c",
+    "publish": "rollup -c && npm publish"
   },
   "author": "Adam Sherwood <adam.the.sherwood@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
     "sinuous": "^0.24.0"
+  },
+  "devDependencies": {
+    "rollup": "^1.31.0",
+    "rollup-plugin-terser": "^5.2.0"
   }
 }
