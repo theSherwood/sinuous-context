@@ -22,6 +22,6 @@ TODO
 
 [Ryan Carniato](https://github.com/ryansolid)
 
-- Author of (Solid)(https://github.com/ryansolid/solid)
+- Author of [Solid](https://github.com/ryansolid/solid)
 - Godfather of fine-grained reactive frontend frameworks
 - Ryan Carniato provided a lot of guidance to both Wesley Luyten and myself as we tried to figure out a way to make a context api work for [Sinuous](https://github.com/luwes/sinuous)

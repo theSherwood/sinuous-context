@@ -5,7 +5,7 @@
   "main": "./src/index.js",
   "scripts": {
     "prod": "rollup -c",
-    "publish": "rollup -c && npm publish"
+    "prePublish": "rollup -c"
   },
   "author": "Adam Sherwood <adam.the.sherwood@gmail.com>",
   "license": "MIT",
