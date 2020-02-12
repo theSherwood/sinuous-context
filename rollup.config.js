@@ -5,18 +5,14 @@ export default [
     input: "./src/context.js",
     output: [
       {
-        file: "dist/context.min.js",
+        file: "dist/min.js",
+        name: "sinuousContext",
         format: "iife",
         compact: true,
         plugins: [terser()]
-      }
-    ]
-  },
-  {
-    input: "./src/index.js",
-    output: [
+      },
       {
-        file: "dist/context.module.js",
+        file: "dist/module.js",
         format: "esm",
         compact: true,
         plugins: [terser()]

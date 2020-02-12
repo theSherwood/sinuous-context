@@ -1,11 +1,11 @@
 {
   "name": "sinuous-context",
-  "version": "0.0.1",
-  "description": "\"A convenient context api for your Sinuous application.\"",
+  "version": "0.0.2",
+  "description": "A convenient context api for your Sinuous application",
   "main": "./src/index.js",
   "scripts": {
-    "prod": "rollup -c",
-    "prePublish": "rollup -c"
+    "build": "rollup -c",
+    "prepublishOnly": "rollup -c"
   },
   "author": "Adam Sherwood <adam.the.sherwood@gmail.com>",
   "license": "MIT",
