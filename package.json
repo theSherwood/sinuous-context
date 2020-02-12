@@ -1,0 +1,14 @@
+{
+  "name": "sinuous-context",
+  "version": "0.0.1",
+  "description": "\"A convenient context api for your Sinuous application.\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adam Sherwood <adam.the.sherwood@gmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "sinuous": "^0.24.0"
+  }
+}
