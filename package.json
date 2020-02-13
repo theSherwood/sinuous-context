@@ -1,6 +1,6 @@
 {
   "name": "sinuous-context",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A convenient context api for your Sinuous application",
   "main": "./src/index.js",
   "scripts": {

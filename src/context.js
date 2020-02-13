@@ -31,7 +31,7 @@ function getChildrenAsNodes(children) {
 function context(context, ...children) {
   function update() {
     const prevContext = tracking._ctx;
-    tracking._ctx = update._ctx;
+    tracking._ctx = { ...prevContext, ...update._ctx };
     const result = getChildrenAsNodes(children);
     tracking._ctx = prevContext;
     return result;
