@@ -2,7 +2,7 @@
 
 This package provides a simple context api for [Sinuous](https://github.com/luwes/sinuous).
 
-## Installation:
+## Installation
 
 There are three ways to consume sinuous-context
 
@@ -65,7 +65,7 @@ Consumed this way, sinuous-context must be configured similar to the Script/CDN 
 
 [CodeSandbox](https://codesandbox.io/s/sinuous-context-module-7d78u)
 
-## Usage:
+## Usage
 
 Apart from `enableContext`, which is available for configuring [Sinuous](https://github.com/luwes/sinuous) on both the Script/CDN and Module distributions of sinuous-context (the ESM method of installation does the configuration itself), there are 3 exports from sinuous-context.
 
@@ -156,6 +156,8 @@ function nested() {
 }
 ```
 
+[CodeSandbox](https://codesandbox.io/s/sinuous-context-simple-example-wj363)
+
 ### Issues and Quirks
 
 For the time being, children that are going to be using `getContext` need to be rendered as components.
@@ -181,7 +183,7 @@ Do this instead:
 Failure to do this will result in all downstream children getting incorrect context.
 
 
-## Acknowledgments and Thanks:
+## Acknowledgments and Thanks
 
 [Wesley Luyten](https://github.com/luwes) 
 
