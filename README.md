@@ -1,5 +1,7 @@
 # sinuous-context
 
+![Badge size](https://img.badgesize.io/https://unpkg.com/sinuous-context/dist/min.js?v=1&compression=gzip&label=gzip&style=flat-square)
+
 A light-weight, fast, and easy to use context api for [Sinuous](https://github.com/luwes/sinuous).
 
 ## Installation
