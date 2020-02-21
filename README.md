@@ -1,6 +1,6 @@
 # sinuous-context
 
-This package provides a simple context api for [Sinuous](https://github.com/luwes/sinuous).
+A light-weight, fast, and easy to use context api for [Sinuous](https://github.com/luwes/sinuous).
 
 ## Installation
 
@@ -14,29 +14,35 @@ Run the following inside your project directory:
 
 There is no configuration. You can use it wherever you are using [Sinuous](https://github.com/luwes/sinuous).
 
-[CodeSandbox](https://codesandbox.io/s/sinuous-context-esm-t3swm)
+[Example CodeSandbox](https://codesandbox.io/s/sinuous-context-esm-t3swm)
 
 ### Script/CDN
 
 Put this into your HTML:
 
-`<script src="https://unpkg.com/sinuous-context/dist/min.js"></script>`
+```html
+<script src="https://unpkg.com/sinuous-context/dist/min.js"></script>
+```
 
 Consumed this way, sinuous-context must configure [Sinuous](https://github.com/luwes/sinuous). This script take will put the variable `sinuousContext` into the global scope. Let's assume you have fetched [Sinuous](https://github.com/luwes/sinuous) in a similar fashion:
 
-`<script src="https://unpkg.com/sinuous/dist/all.js"></script>`
+```html
+<script src="https://unpkg.com/sinuous/dist/all.js"></script>
+```
 
 You need to wrap the `api` property from [Sinuous](https://github.com/luwes/sinuous). Something like this:
 
-`window.sinuousContext.enableContext(window.S.api)`
+```js
+window.sinuousContext.enableContext(window.S.api)
+```
 
-[CodeSandbox](https://codesandbox.io/s/sinuous-context-cdn-lupwk)
+[Example CodeSandbox](https://codesandbox.io/s/sinuous-context-cdn-lupwk)
 
 ### Module
 
 Consumed this way, sinuous-context must be configured similar to the Script/CDN method. For example:
 
-```
+```html
 <script
   type="module"
   src="https://unpkg.com/sinuous@0.24.0/module/all.js"
@@ -63,7 +69,7 @@ Consumed this way, sinuous-context must be configured similar to the Script/CDN 
 </script>
 ```
 
-[CodeSandbox](https://codesandbox.io/s/sinuous-context-module-7d78u)
+[Example CodeSandbox](https://codesandbox.io/s/sinuous-context-module-7d78u)
 
 ## Usage
 
@@ -79,7 +85,7 @@ Apart from `enableContext`, which is available for configuring [Sinuous](https:/
 
 For example:
 
-```
+```js
 import { context } from "sinuous-context";
 
 function someComponent() {
@@ -105,7 +111,7 @@ function someComponent() {
 
 This part is straightforward. Pass a key to `getContext` to get a particular value, or pass nothing to get all context available at that part of the tree:
 
-```
+```js
 import { getContext } from "sinuous-context";
 
 function someOtherComponent() {
@@ -133,7 +139,7 @@ function andAnotherComponent() {
 
 As anyone who has used context apis in frameworks like React or Svelte will know, a context api should provide a form a dynamic scope or hierarchical shadowing. sinuous-context does this. For example:
 
-```
+```js
 import { html } from "sinuous";
 import { context, getContext } from "sinuous-context";
 
@@ -156,28 +162,28 @@ function nested() {
 }
 ```
 
-[CodeSandbox](https://codesandbox.io/s/sinuous-context-simple-example-wj363)
+[Example CodeSandbox](https://codesandbox.io/s/sinuous-context-simple-example-wj363)
 
 ### Issues and Quirks
 
 For the time being, children that are going to be using `getContext` need to be rendered as components.
 
 Don't do this:
-```
-...
+```js
+`...
   <p>
     ${children}
   </p>
-...
+...`
 ```
 
 Do this instead:
-```
-...
+```js
+`...
   <p>
     <${children} />
   </p>
-...
+...`
 ```
 
 Failure to do this will result in all downstream children getting incorrect context.
