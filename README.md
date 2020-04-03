@@ -6,7 +6,7 @@ A light-weight, fast, and easy to use context api for [Sinuous](https://github.c
 
 ## Installation
 
-There are three ways to consume sinuous-context
+There are two ways to consume sinuous-context
 
 ### ESM
 
@@ -18,7 +18,7 @@ There is no configuration. You can use it wherever you are using [Sinuous](https
 
 [Example CodeSandbox](https://codesandbox.io/s/sinuous-context-esm-t3swm)
 
-### Script/CDN
+### CDN
 
 Put this into your HTML:
 
@@ -40,42 +40,9 @@ window.sinuousContext.enableContext(window.S.api)
 
 [Example CodeSandbox](https://codesandbox.io/s/sinuous-context-cdn-lupwk)
 
-### Module
-
-Consumed this way, sinuous-context must be configured similar to the Script/CDN method. For example:
-
-```html
-<script
-  type="module"
-  src="https://unpkg.com/sinuous@0.24.0/module/all.js"
-></script>
-<script
-  type="module"
-  src="https://unpkg.com/sinuous-context@0.0.3/dist/module.js"
-></script>
-<script type="module">
-  import { sinuous } from "https://unpkg.com/sinuous@0.24.0/module/all.js";
-  import {
-    enableContext,
-    Context,
-    getContext
-  } from "https://unpkg.com/sinuous-context@0.0.3/dist/module.js";
-  let { html, api } = sinuous;
-  
-  enableContext(api);
-
-  /*  
-    ...  Sinuous App ...
-  */
-
-</script>
-```
-
-[Example CodeSandbox](https://codesandbox.io/s/sinuous-context-module-7d78u)
-
 ## Usage
 
-Apart from `enableContext`, which is available for configuring [Sinuous](https://github.com/luwes/sinuous) on both the Script/CDN and Module distributions of sinuous-context (the ESM method of installation does the configuration itself), there are 3 exports from sinuous-context.
+Apart from `enableContext`, which is available for configuring [Sinuous](https://github.com/luwes/sinuous) on the CDN distribution of sinuous-context (the ESM method of installation does the configuration itself), there are 3 exports from sinuous-context.
 
 1. `context` : a context of context provider style component
 2. `Context` : an alias of `context` for those who prefer capitalized component names
