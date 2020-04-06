@@ -2,7 +2,7 @@
 
 ![Badge size](https://img.badgesize.io/https://unpkg.com/sinuous-context/dist/min.js?v=1&compression=gzip&label=gzip&style=flat-square)
 
-A light-weight, fast, and easy to use context api for [Sinuous](https://github.com/luwes/sinuous).
+A light-weight, fast, and easy-to-use context api for [Sinuous](https://github.com/luwes/sinuous).
 
 ## Installation
 
@@ -12,9 +12,9 @@ There are two ways to consume sinuous-context
 
 Run the following inside your project directory:
 
-`npm install sinuous-context`
-
-There is no configuration. You can use it wherever you are using [Sinuous](https://github.com/luwes/sinuous).
+```
+npm install sinuous-context
+```
 
 [Example CodeSandbox](https://codesandbox.io/s/sinuous-context-esm-t3swm)
 
@@ -26,23 +26,20 @@ Put this into your HTML:
 <script src="https://unpkg.com/sinuous-context/dist/min.js"></script>
 ```
 
-Consumed this way, sinuous-context must configure [Sinuous](https://github.com/luwes/sinuous). This script take will put the variable `sinuousContext` into the global scope. Let's assume you have fetched [Sinuous](https://github.com/luwes/sinuous) in a similar fashion:
+Be sure you place it below your [Sinuous](https://github.com/luwes/sinuous) CDN, like this:
 
 ```html
 <script src="https://unpkg.com/sinuous/dist/all.js"></script>
+<script src="https://unpkg.com/sinuous-context/dist/min.js"></script>
 ```
 
-You need to wrap the `api` property from [Sinuous](https://github.com/luwes/sinuous). Something like this:
-
-```js
-window.sinuousContext.enableContext(window.S.api)
-```
+This places a `sinuousContext` property on the `window` object.
 
 [Example CodeSandbox](https://codesandbox.io/s/sinuous-context-cdn-lupwk)
 
 ## Usage
 
-Apart from `enableContext`, which is available for configuring [Sinuous](https://github.com/luwes/sinuous) on the CDN distribution of sinuous-context (the ESM method of installation does the configuration itself), there are 3 exports from sinuous-context.
+There are 3 exports from sinuous-context.
 
 1. `context` : a context of context provider style component
 2. `Context` : an alias of `context` for those who prefer capitalized component names
