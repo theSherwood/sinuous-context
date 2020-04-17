@@ -11,9 +11,26 @@
     "context",
     "ui"
   ],
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run test:once",
+      "post-merge": "npm install",
+      "post-rewrite": "npm install"
+    }
+  },
   "scripts": {
-    "build": "rollup -c",
-    "prepublishOnly": "rollup -c"
+    "lint": "npm run format && eslint '{src,test}/**/*.js'",
+    "format": "prettier --write '{src,test}/**/*.js' 'scripts/**/*.js' '**/*.md'",
+    "build": "rollup -c --silent",
+    "watch": "rollup -wc --silent",
+    "prepublishOnly": "rollup -c",
+    "coverage": "codecov",
+    "test": "cross-env COVERAGE=true yarn karma start",
+    "test:open": "cross-env COVERAGE=true yarn karma start --open",
+    "test:once": "cross-env COVERAGE=true yarn karma start --single-run",
+    "docs": "node scripts/docs.js && yarn format:docs",
+    "format:docs": "prettier --write '**/*.md'"
   },
   "homepage": "https://github.com/theSherwood/sinuous-context",
   "author": "Adam Sherwood <adam.the.sherwood@gmail.com>",
@@ -22,7 +39,44 @@
     "sinuous": "^0.24.0"
   },
   "devDependencies": {
-    "rollup": "^1.31.0",
-    "rollup-plugin-terser": "^5.2.0"
+    "sinuous": "^0.24.0",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@rollup/plugin-alias": "^3.0.1",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@rollup/plugin-replace": "^2.3.1",
+    "ansi-colors": "^4.1.1",
+    "babel-eslint": "^10.1.0",
+    "codecov": "^3.6.5",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-plugin-fp": "^2.3.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsdoc": "^22.1.0",
+    "esm": "^3.2.25",
+    "faucet": "0.0.1",
+    "fs-extra": "^9.0.0",
+    "ghooks": "^2.0.4",
+    "jsdoc-to-markdown": "^5.0.3",
+    "karma": "^4.4.1",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage": "^2.0.1",
+    "karma-rollup-preprocessor": "^7.0.5",
+    "karma-sauce-launcher": "^4.1.2",
+    "karma-tap": "^4.2.0",
+    "karma-tap-pretty-reporter": "^4.2.0",
+    "minimist": "^1.2.5",
+    "prettier": "^2.0.4",
+    "rollup": "^2.4.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-gzip": "^2.3.0",
+    "rollup-plugin-istanbul": "^2.0.1",
+    "rollup-plugin-size": "^0.2.2",
+    "rollup-plugin-sourcemaps": "^0.5.0",
+    "rollup-plugin-terser": "^5.3.0",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.13.2",
+    "tape-browser": "^4.13.0"
   }
 }
