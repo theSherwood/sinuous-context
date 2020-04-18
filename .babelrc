@@ -1,0 +1,21 @@
+{
+  "presets": ["@babel/preset-env"],
+  "plugins": [
+    "@babel/plugin-transform-runtime",
+    [
+      "babel-plugin-transform-jsx-to-htm",
+      {
+        "tag": "$$html"
+      }
+    ],
+    [
+      "sinuous/babel-plugin-htm",
+      {
+        "tag": "$$html"
+      }
+    ]
+  ],
+  "parserOpts": {
+    "plugins": ["dynamicImport"]
+  }
+}

@@ -163,6 +163,10 @@ module.exports = function (config) {
             libraryTest: __dirname + 'src/index.js',
           },
         }),
+        babel({
+          include: ['test/**.jsx.js'],
+          runtimeHelpers: true,
+        }),
         nodeResolve(),
         commonjs(),
         istanbul({
@@ -170,10 +174,6 @@ module.exports = function (config) {
             ? config.grep.replace('/test/', '/src/')
             : 'src/**/*.js',
         }),
-        sauceLabs &&
-          babel({
-            include: ['src/**'],
-          }),
       ].filter(Boolean),
       onwarn: (msg) => /eval/.test(msg) && void 0,
     },
