@@ -2,7 +2,7 @@
   "name": "sinuous-context",
   "version": "0.3.0",
   "description": "Context api for your Sinuous application",
-  "main": "./src/index.js",
+  "main": "./src/context.js",
   "keywords": [
     "sinuous",
     "reactive",
