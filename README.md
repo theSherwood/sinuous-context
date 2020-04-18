@@ -126,7 +126,9 @@ function nested() {
 
 [Example CodeSandbox](https://codesandbox.io/s/sinuous-context-simple-example-wj363)
 
-### Issues and Quirks
+### Issues, Quirks, Limitations
+
+Currently, sinuous-context does not work with JSX. 
 
 If `context` (or `Context`) is the only direct child component of a call to `html`, `html` will return a `DocumentFragment`. This should generally pose no issues.
 
