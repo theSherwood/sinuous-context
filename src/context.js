@@ -1,4 +1,4 @@
-import { api } from "sinuous";
+import { api } from 'sinuous';
 
 const pipe = (f, g) => (...args) => g(...f(...args));
 
@@ -10,7 +10,7 @@ let tracking = {};
 // Wraps any dynamic content (observables, computeds, other components)
 // embedded in components with hierarchical context tracking.
 function enableTracking(el, value, ...args) {
-  if (typeof value !== "function") {
+  if (typeof value !== 'function') {
     return [el, value, ...args];
   }
 
@@ -28,9 +28,15 @@ function enableTracking(el, value, ...args) {
 
 // Calls all the Sinuous component functions in the array of children
 function getChildrenAsNodes(children) {
-  return children.map((child) => {
-    while (typeof child === "function") {
+  return children.flatMap((child) => {
+    if (Array.isArray(child)) {
+      return getChildrenAsNodes(child);
+    }
+    while (typeof child === 'function') {
       child = child();
+    }
+    if (child instanceof DocumentFragment) {
+      return getChildrenAsNodes(Array.from(child.children));
     }
     return child;
   });
@@ -39,7 +45,7 @@ function getChildrenAsNodes(children) {
 /**
  *
  * @param {Object} context
- * @param  {...any} children
+ * @param  {...*} children
  * @returns {Function}
  */
 function context(context, ...children) {
@@ -62,7 +68,7 @@ export { context, context as Context };
  * nearest in the context hierarchy; otherwise, returns an object of every
  * key/value pair visible from that level of the context hierarchy.
  *
- * @param {String} key - This is probably the prop name.
+ * @param {String} [key] - This is probably the prop name.
  * @returns {*} Either the value assigned to `key` or all key/value pairs
  * at that level of the hierarchy.
  */
