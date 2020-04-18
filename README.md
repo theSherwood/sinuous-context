@@ -97,7 +97,7 @@ function andAnotherComponent() {
   console.log(allContext);
   // { foo: someFunc, bar: someObservable, baz: someString }
 
-  return html` ... `;
+  return html`...`;
 }
 ```
 
@@ -120,7 +120,7 @@ export function outerComponent() {
 
 function nested() {
   let allContext = getContext();
-  return html` <div>${allContext.a * allContext.b}</div> `;
+  return html`<div>${allContext.a * allContext.b}</div>`;
 }
 ```
 
