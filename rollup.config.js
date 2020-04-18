@@ -1,8 +1,12 @@
-import { terser } from "rollup-plugin-terser";
+import { terser } from 'rollup-plugin-terser';
+import bundleSize from 'rollup-plugin-size';
+import gzip from 'rollup-plugin-gzip';
+import sourcemaps from 'rollup-plugin-sourcemaps';
+import nodeResolve from '@rollup/plugin-node-resolve';
 
 export default [
   {
-    input: "./src/index.js",
+    input: "src/context.js",
     output: [
       {
         file: "dist/min.js",
@@ -12,7 +16,24 @@ export default [
           sinuous: "S",
         },
         compact: true,
-        plugins: [terser()],
+        plugins: [
+          bundleSize({
+            columnWidth: 25,
+          }),
+          sourcemaps(),
+          nodeResolve(),
+          terser({
+            compress: {
+              passes: 2,
+            },
+            mangle: {
+              properties: {
+                regex: /^_/,
+              },
+            },
+          }),
+          gzip(),
+        ],
       },
     ],
   },

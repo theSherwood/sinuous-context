@@ -39,6 +39,8 @@ This places a `sinuousContext` property on the `window` object.
 
 ## Usage
 
+[API](./docs/README.md)
+
 There are 3 exports from sinuous-context.
 
 1. `context` : a context of context provider style component
@@ -78,11 +80,11 @@ function someComponent() {
 This part is straightforward. Pass a key to `getContext` to get a particular value, or pass nothing to get all context available at that part of the tree:
 
 ```js
-import { getContext } from "sinuous-context";
+import { getContext } from 'sinuous-context';
 
 function someOtherComponent() {
-  let fooFunc = getContext("foo");        // someFunc
-  let barObservable = getContext("bar");  // someObservable
+  let fooFunc = getContext('foo'); // someFunc
+  let barObservable = getContext('bar'); // someObservable
 
   fooFunc();
 
@@ -95,9 +97,7 @@ function andAnotherComponent() {
   console.log(allContext);
   // { foo: someFunc, bar: someObservable, baz: someString }
 
-  return html`
-    ...
-  `;
+  return html`...`;
 }
 ```
 
@@ -106,61 +106,53 @@ function andAnotherComponent() {
 As anyone who has used context apis in frameworks like React or Svelte will know, a context api should provide a form a dynamic scope or hierarchical shadowing. sinuous-context does this. For example:
 
 ```js
-import { html } from "sinuous";
-import { context, getContext } from "sinuous-context";
+import { html } from 'sinuous';
+import { context, getContext } from 'sinuous-context';
 
 export function outerComponent() {
   return html`
     <${context} a=${10} b=${2}>
-      <${nested} />             // 20
-      <${context} b=${4.5}>
-        <${nested} />           // 45
-      <//>
+      <${nested} /> // 20
+      <${context} b=${4.5}> <${nested} /> // 45 <//>
     <//>
   `;
 }
 
 function nested() {
   let allContext = getContext();
-  return html`
-    <div>${allContext.a * allContext.b}</div>
-  `;
+  return html`<div>${allContext.a * allContext.b}</div>`;
 }
 ```
 
 [Example CodeSandbox](https://codesandbox.io/s/sinuous-context-simple-example-wj363)
 
-### Issues and Quirks
+### Issues, Quirks, Limitations
 
-For the time being, children that are going to be using `getContext` need to be rendered as components.
+If using JSX views with [Sinuous](https://github.com/luwes/sinuous), a `context` (or `Context`) component cannot be at the root of your app. A call to `context` returns an update function (like an observable), not a dom node. It must be wrapped in some dom element, like so:
 
-Don't do this:
 ```js
-`...
-  <p>
-    ${children}
-  </p>
-...`
+let App = () => {
+  return (
+    <div>
+      <Context>
+        <Component1 />
+        <Component2 />
+      </Context>
+    </div>
+  );
+};
+
+document.getElementById('app').append(App());
 ```
 
-Do this instead:
-```js
-`...
-  <p>
-    <${children} />
-  </p>
-...`
-```
-
-Failure to do this will result in all downstream children getting incorrect context.
-
+If `context` (or `Context`) is the only direct child component of a call to `html`, `html` will return a `DocumentFragment`. This should generally pose no issues.
 
 ## Acknowledgments and Thanks
 
-[Wesley Luyten](https://github.com/luwes) 
+[Wesley Luyten](https://github.com/luwes)
 
 - Author of [Sinuous](https://github.com/luwes/sinuous)
-- The principal code of sinuous-context is taken directly from [this codesandbox](https://codesandbox.io/s/sinuous-context-6vz16) by Wesley Luyten. The only real changes to this code that sinuous-context brings are changes to the api. As such, this package is hugely indebted to him. 
+- The principal code of sinuous-context is taken directly from [this codesandbox](https://codesandbox.io/s/sinuous-context-6vz16) by Wesley Luyten. The only real changes to this code that sinuous-context brings are changes to the api. As such, this package is hugely indebted to him.
 
 [Ryan Carniato](https://github.com/ryansolid)
 
