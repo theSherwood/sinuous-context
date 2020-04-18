@@ -29,14 +29,14 @@ function enableTracking(el, value, ...args) {
 // Calls all the Sinuous component functions in the array of children
 function getChildrenAsNodes(children) {
   return children.flatMap((child) => {
-    if (Array.isArray(child)) {
-      return getChildrenAsNodes(child);
-    }
     while (typeof child === 'function') {
       child = child();
     }
     if (child instanceof DocumentFragment) {
       return getChildrenAsNodes(Array.from(child.children));
+    }
+    if (Array.isArray(child)) {
+      return getChildrenAsNodes(child);
     }
     return child;
   });

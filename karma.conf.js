@@ -160,7 +160,7 @@ module.exports = function (config) {
         alias({
           entries: {
             tape: 'tape-browser',
-            libraryTest: __dirname + 'src/index.js',
+            libraryTest: __dirname + 'src/context.js',
           },
         }),
         babel({
