@@ -26,7 +26,7 @@
     "watch": "rollup -wc --silent",
     "prepublishOnly": "rollup -c",
     "coverage": "codecov",
-    "test": "cross-env COVERAGE=true yarn karma start",
+    "test": "cross-env yarn karma start",
     "test:open": "cross-env COVERAGE=true yarn karma start --open",
     "test:once": "cross-env COVERAGE=true yarn karma start --single-run",
     "docs": "node scripts/docs.js && yarn format:docs",
