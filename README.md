@@ -128,7 +128,22 @@ function nested() {
 
 ### Issues, Quirks, Limitations
 
-Currently, sinuous-context does not work with JSX. 
+If using JSX views with [Sinuous](https://github.com/luwes/sinuous), a `context` (or `Context`) component cannot be at the root of your app. A call to `context` returns an update function (like an observable), not a dom node. It must be wrapped in some dom element, like so:
+
+```js
+let App = () => {
+  return (
+    <div>
+      <Context>
+        <Component1 />
+        <Component2 />
+      </Context>
+    </div>
+  );
+};
+
+document.getElementById('app').append(App());
+```
 
 If `context` (or `Context`) is the only direct child component of a call to `html`, `html` will return a `DocumentFragment`. This should generally pose no issues.
 
