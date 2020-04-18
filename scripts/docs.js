@@ -6,7 +6,7 @@ const c = require('ansi-colors');
 const sources = [
   {
     cwd: '',
-    files: 'src/index.js',
+    files: 'src/context.js',
     config: 'jsdoc.config.js',
     output: 'docs/README.md',
   },
@@ -54,6 +54,7 @@ function createCwd(cwd) {
 
 function getJsdocConfig(cwd, config, files) {
   const p = createCwd(cwd);
+
   const c = require(path.resolve(config));
   c.files = (files && [].concat(files).map(p)) || c.files;
   return c;

@@ -43,7 +43,19 @@ function getChildrenAsNodes(children) {
 }
 
 /**
- *
+ * Used like a component. Pass `key: value` pairs as props.
+ * 
+ * @example
+ * let view = html`
+ *    <${Context} key1=${value1} key2=${value2}> 
+ *      <${Component1} />
+ *      <${Component2} />
+ *      <div>
+ *        <${Component3} />
+ *      </div>
+ *    <//>
+ * `;
+ * 
  * @param {Object} context
  * @param  {...*} children
  * @returns {Function}
@@ -67,6 +79,15 @@ export { context, context as Context };
  * If `key` is passed, returns the context value for that `key` that is
  * nearest in the context hierarchy; otherwise, returns an object of every
  * key/value pair visible from that level of the context hierarchy.
+ * 
+ * @example
+ * // assume context = { key1: value1, key2: value2 }
+ * let c = getContext('key1') // c = value1
+ * 
+ * @example
+ * // assume context = { key1: value1, key2: value2 }
+ * let c = getContext() // c = { key1: value1, key2: value2 }
+ * 
  *
  * @param {String} [key] - This is probably the prop name.
  * @returns {*} Either the value assigned to `key` or all key/value pairs

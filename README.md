@@ -39,6 +39,8 @@ This places a `sinuousContext` property on the `window` object.
 
 ## Usage
 
+[API](./docs/README.md)
+
 There are 3 exports from sinuous-context.
 
 1. `context` : a context of context provider style component
@@ -126,29 +128,7 @@ function nested() {
 
 ### Issues and Quirks
 
-For the time being, children that are going to be using `getContext` need to be rendered as components.
-
-Don't do this:
-
-```js
-`...
-  <p>
-    ${children}
-  </p>
-...`;
-```
-
-Do this instead:
-
-```js
-`...
-  <p>
-    <${children} />
-  </p>
-...`;
-```
-
-Failure to do this will result in all downstream children getting incorrect context.
+If `context` (or `Context`) is the only direct child component of a call to `html`, `html` will return a `DocumentFragment`. This should generally pose no issues.
 
 ## Acknowledgments and Thanks
 
