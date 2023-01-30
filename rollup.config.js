@@ -34,6 +34,10 @@ export default [
           }),
           gzip(),
         ],
+      },{
+        file:     './module/sinuous-context.esm.js',
+        format:   'esm',
+        sourcemap:true
       },
     ],
   },
